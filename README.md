@@ -7,8 +7,12 @@ Dispositivo electronico que permite el manejo de señalizacion vial propia de un
 AREA: Deportes , salud física y seguridad vial.
 
 Autor :
-Daniel Torres Estrada
-Yolanda Arisbey Lopez Gil
-Isai Suriel Aldana Yañez
-Kevin David Hernandez Ortiz
-Charly Daniel Flores Negrete
+<p>Isai Suriel Aldana Yañez</p>
+<p>Kevin David Hernandez Ortiz</p>
+<p>Charly Daniel Flores Negrete</p>
+<p>Yolanda Arisbey Lopez Gil</p>
+<p>Daniel Torres Estrada</p>
+
+
+
+
