@@ -16,7 +16,7 @@
 
 
 <h3> Plataformas :</h3> Android
-<h3>Plugins Adicionales Utilizados : <h3>
+<h3>Plugins Adicionales Utilizados : </h3>
 <p>&#186;cordova-plugin-bluetooth-serial </p>
 <p>&#186;cordova-plugin-geolocation </p>
 <p>&#186;cordova-plugin-toaster </p>
