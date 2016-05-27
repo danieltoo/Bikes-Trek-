@@ -1,4 +1,4 @@
-<style type="text/css">span{color: red;}</style>
+
 <span>TECNOLOGICO NACIONAL DE MEXICO</span>
 INSTITUTO TECNOLOGICO DE CUAUTLA
 
