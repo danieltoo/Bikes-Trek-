@@ -1,6 +1,6 @@
 
-<span>TECNOLOGICO NACIONAL DE MEXICO</span>
-INSTITUTO TECNOLOGICO DE CUAUTLA
+<h2>TECNOLOGICO NACIONAL DE MEXICO</h2>
+<h3>INSTITUTO TECNOLOGICO DE CUAUTLA</h3>
 
 PROYECTO : BIKES TREK
 <p>Dispositivo electronico que permite el manejo de señalizacion vial propia de una bicicleta y una aplicacion para dispositivos moviles para controlarlo.</p>
