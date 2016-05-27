@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+	Control Example for Bluetooth Serial PhoneGap Plugin
+    https://github.com/danieltoo/Bikes-Trek-
+
+    Copyright 2013 Daniel Torres
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name = "format-detection" content = "telephone=no"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;" />
+        <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-dark.css" />        
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Bike's Trek</title>
+    </head>
+    <body id="body">
+        <div class="topcoat-navigation-bar" id="bar1">
+            <div class="topcoat-navigation-bar__item left quarter">
+                <a class="topcoat-icon-button--quiet" href="index.html" id="Irecargar">
+                  <span class="topcoat-icon topcoat-icon--reload"></span>
+                </a> 
+            </div>
+            <div class="topcoat-navigation-bar__item center half " id="Title">
+                <a ><h1 class="topcoat-navigation-bar__title">Bike's Trek</h1></a>
+            </div>
+            <div class="topcoat-navigation-bar__item right quarter">
+                <a class="topcoat-icon-button--quiet" id="irainformacion" href="map.html" >
+                        <span class="topcoat-icon topcoat-icon--info"></span>
+                </a> 
+            </div>
+        </div>
+        <div class="topcoat-navigation-bar" id="bar2">
+            <div class="topcoat-navigation-bar__item left quarter">
+                <a class="topcoat-icon-button--quiet" id="iracontrol" >
+                    <span class="topcoat-icon topcoat-icon--contr"></span>
+                </a>
+            </div>
+            <div class="topcoat-navigation-bar__item center quarter">
+                <a class="topcoat-icon-button--quiet" id="iraconfig">
+                    <span class="topcoat-icon topcoat-icon--config"></span>
+                </a>
+            </div>
+            <div class="topcoat-navigation-bar__item center quarter">
+                <a class="topcoat-icon-button--quiet" id="iramejores">
+                    <span class="topcoat-icon topcoat-icon--favoritos"></span>
+                </a>
+            </div>
+             
+            <div class="topcoat-navigation-bar__item right quarter">
+                <a class="topcoat-icon-button--quiet" id="disconnectButton" >
+                    <span class="topcoat-icon topcoat-icon--close"></span>
+                </a> 
+            </div> 
+        </div>           
+        <div id="content">
+        <!-- Conection -->
+            <div id="connection">
+                <div style="margin: 20px">
+                    <p>Dispositivos:</p> <br/>
+                    <select id="deviceList"class="topcoat-button--large">
+                        <option>Buscando...</option>
+                    </select>       
+                </div>
+                <p>
+                    <a class="effeck-button slide-right topcoat-button--large is-disabled topcoat-button--cta" id="connectButton">Conectar</a>
+                </p>
+                <p>
+                    <a class="topcoat-button--cta" id="listButton">Encender Bluetooth</a>
+                </p>
+                <div id="vincular">
+                    <br>¿No se encuentra tu dispositivo?<br>
+                    <a class="effeck-button slide-right is-disabled topcoat-button--cta" id="settings">Ajustes</a> 
+                </div>
+                
+                 <div align="center"><img src="img/debian_logo128.png" ></div> 
+           </div>
+        </div>
+        <!-- Conection -->
+
+        <!-- Control -->
+            <div id="control" align="center">  
+            <!-- Direccionales -->        
+                <div id="direcciones">
+                    <h2 align="center">Direccionales</h2>  
+                    <a class="topcoat-icon-button--quiet" id="Badelante" >
+                        <img src="img/arriba.png" width="85">
+                    </a>
+                    <br>
+                    <a class="topcoat-icon-button--quiet" id="Bizquierda">
+                        <img src="img/izquierda.png" width="85">
+                    </a>
+                    
+                    <a class="topcoat-icon-button--quiet" id="Bderecha">
+                        <img src="img/derecha.png" width="85">
+                    </a>
+                     <br>  
+                    <a class="topcoat-icon-button--quiet"  id="Balto">
+                        <img src="img/stop-2-icon.png" width="85">
+                    </a>
+                    <div align="right">
+                        <a class="topcoat-icon-button--quiet" id="iracronometro">
+                            <span class="topcoat-icon topcoat-icon--clock"></span>
+                        </a>
+                    </div> 
+                    
+                    
+                </div>
+            <!-- Direccionales -->
+            <!-- Cronometro -->
+                <div id="cronometro">
+                    <h3 align="center"> Cronometro</h3>
+                    <form name="cron" action="#">
+                        <input type="button" value="Empezar" name="boton1" id="emprezar" class="topcoat-button--cta" /> 
+                        <input type="button" value="Parar" name="boton2"  id="parar" class="topcoat-button--cta"/>
+                        <br>
+                    </form>
+                    <p>Tiempo:</p>
+                    <input value="00" size="1"  id="horas"  class="topcoat-text-input" readonly></input> :
+                    <input value="00" size="1" id="minutos" class="topcoat-text-input"readonly></input> :
+                    <input value="00" size="1" id="segundos" class="topcoat-text-input" readonly></input> :
+                    <input value="00" size="1" id="milisegundos" class="topcoat-text-input" readonly></input> 
+                    <br><br>
+                    <p>Distancia:<input size="5" value ="0 m" id="distancia" readonly></input></p> 
+                    <p>V. Aprox.:<input size="7" value="0 m/s" id="velocidad" readonly></input></p> 
+                    <a class="topcoat-icon-button--quiet" id="tiempoStar" onclick="insertar()" >
+                        <span class="topcoat-icon topcoat-icon--star"></span>
+                    </a>
+                    <div align="left">
+                        <a class="topcoat-icon-button--quiet" id="iradirecciones">
+                            <span class="topcoat-icon topcoat-icon--volante"></span>
+                        </a>
+                    </div>
+                    
+                </div>
+            <!-- Cronometro -->
+            </div>
+        <!-- Control --> 
+
+        <!-- Configuracion -->  
+            <div id="Config" align="center">
+                <h3 align="center">Configuraciones</h3>
+                    <div align="left" id="automatic">
+                    <p align="center">Iluminacion</p>
+                        <p align="center">Automatica: </p>
+                        <label class="topcoat-switch"  style='margin-left: 6.5em' >
+                            <input type="checkbox" class="topcoat-switch__input" id="Mot" checked>
+                            <div class="topcoat-switch__toggle"></div>
+                        </label>
+                        <br><br>
+                    </div>
+                    <div id="manual">
+                        <p>Manual:</p>
+                        <input type="range" class="topcoat-range" max="9" id="Ilum" min="0" step="1"value ="5">
+                        <span id="valorrange">5</span>
+                    </div>
+                    <p align="center">Temas</p>
+                    <div align="center">
+                        <select class="topcoat-button" id="temas">
+                            <option>Light</option>
+                            <option>Dark</option>
+                        </select>  
+                    </div>  
+            </div>
+        <!-- Configuracion --> 
+
+        <!-- Favoritos -->
+            <div id="Favoritos" align="center">
+                <h3>Favoritos</h3>
+                <div id="salida" align="center"> </div>
+                <div id="cont"></div> 
+                <div id="statusBD"></div>
+            </div>
+        <!-- Favoritos -->  
+
+        <!-- Ayuda -->
+            <div id="Ayuda" align="center">
+                <h2>Ayuda</h2>
+            </div>
+        <!-- Ayuda -->  
+
+            <div style="display: none;" >
+                <form id="chatform">
+                        <textarea id="messages" readonly></textarea>                    
+                        <input type="text" class="topcoat-text-input" id="message" placeholder="Comandos" />
+                        <a class="topcoat-button--cta" id="sendButton">
+                        <span class="topcoat-icon topcoat-icon--exe"></span>
+                        </a>
+                   </form>
+            </div>
+        </div>
+        <footer>
+            <div id="statusMessage" class="notification" align="center"></div>
+        </footer>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/cronometro.js"></script>
+        <script type="text/javascript" src="js/base.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
