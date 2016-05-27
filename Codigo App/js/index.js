@@ -17,10 +17,6 @@
     limitations under the License.
 
 */
-
-/* jshint quotmark: false, unused: vars */
-/* global cordova, bluetoothSerial, listButton, connectButton, sendButton, disconnectButton */
-/* global chatform, deviceList, message, messages, statusMessage, chat, connection */
 'use strict';
 var ayudaactiva = false;
 var fondo = "#595b5b";
@@ -35,17 +31,10 @@ var app = {
         document.addEventListener('deviceready', this.deviceready, false);
     },
     deviceready: function() {
-        // note that this is an event handler so the scope is that of the event
-        // so we need to call app.foo(), and not this.foo()
- 
-        // wire buttons to functions
         connectButton.ontouchstart = app.connect;
         listButton.ontouchstart = app.EncenderBT;
         Mot.onchange = app.autoluz;
         settings.ontouchstart= app.setting;
-
-        //irainformacion.ontouchstart=app.Mayuda;
-        
         iracontrol.ontouchstart=app.Mcontrol;
         iracronometro.ontouchstart=app.Mcronometro;
         iradirecciones.ontouchstart=app.Mdirecciones;
@@ -56,17 +45,11 @@ var app = {
         Bizquierda.ontouchstart= app.enviaizquierda;
         Bderecha.ontouchstart= app.enviaderecha;
         Balto.ontouchstart= app.enviaalto;
-
         Ilum.onchange = app.Ilumina;
-
         sendButton.ontouchstart = app.sendData;
         chatform.onsubmit = app.sendData;
         disconnectButton.ontouchstart = app.disconnect;
-
-        // listen for messages
         bluetoothSerial.subscribe("\n", app.onmessage, app.generateFailureFunction("Error al conectar"));
-
-        // get a list of peers
         setTimeout(app.list, 2000);
     },
     setting: function(event) {
@@ -77,10 +60,8 @@ var app = {
             function() {
                 location.reload(true);
                 navigator.showToast("Bluetooth Activado");
-                //alert("Bluetooth Activado");
             },
             function() {
-                //alert("Ocurrio un problema con bluetooth");
                 navigator.showToast("Verifique su configuración");
             }
         );
@@ -154,13 +135,11 @@ var app = {
        if (acautoluz) {
             acautoluz=false;
             act="manual";
-            //alert("Cambiando a manual");
             navigator.showToast("Iluminación manual");
             manual.style.display= "block";
         }else{
             acautoluz=true;
             act="automatico";
-            //alert("Cambiando a automatico");
             navigator.showToast("Iluminación automatica");
             manual.style.display="none";
         }
@@ -234,19 +213,13 @@ var app = {
         if (event) {
             event.preventDefault();
         }
-        //app.setStatus("Desconectando...");
         navigator.showToast("Desconectando...");
         bluetoothSerial.disconnect(app.ondisconnect);
     },
     sendData: function(event) {
         event.preventDefault();
         var text = message.value + "\n";
-        var success = function () {
-            //Esto no sirve
-            /*message.value = "";
-            messages.value += ("Us: " + text);
-            messages.scrollTop = messages.scrollHeight;*/
-        };
+        var success = function () {};
         bluetoothSerial.write(text, success);
         return false;
     },
@@ -272,8 +245,7 @@ var app = {
             deviceList.appendChild(option);
             if (cordova.platformId === "ios") { // BLE
                 app.setStatus("No hay dispositivos vinculados.");
-            } else { // Android
-                //app.setStatus("Por favor vincule su dispositivo.");
+            } else { 
                 bluetoothSerial.isEnabled(
                     function() { 
                         navigator.showToast("Por favor vincule su dispositivo.");
@@ -287,12 +259,10 @@ var app = {
                 
             }
             app.disable(connectButton);
-            //listButton.style.display = "";
         } else {
             app.enable(connectButton);
             listButton.style.display = "none";
             navigator.showToast("Encontrados " + devices.length + " dispositivo" + (devices.length === 1 ? "." : "s."));
-            //app.setStatus("Encontrados " + devices.length + " dispositivo" + (devices.length === 1 ? "." : "s."));
         }
     },
     onconnect: function() {
@@ -303,9 +273,7 @@ var app = {
         iracontrol.style.backgroundColor="#288edf";
         iraconfig.style.backgroundColor=fondo;
         iramejores.style.backgroundColor=fondo;
-        //alert("Conectado");
         navigator.showToast("Conectado");
-        //app.setStatus("Conectado");
     },
     ondisconnect: function(reason) {
         var details = "";
@@ -332,16 +300,12 @@ var app = {
             v=0;
         }
         velocidad.value=v+" m/s";
-        //alert(v);
-        //messages.value += "Them: " + message;
-        //messages.scrollTop = messages.scrollHeight;
     },
-    setStatus: function(message) { // setStatus
+    setStatus: function(message) { 
         console.log(message);
         window.clearTimeout(app.statusTimeout);
         statusMessage.innerHTML = message;
         statusMessage.className = 'fadein';
-        // automatically clear the status with a timer
         app.statusTimeout = setTimeout(function () {
             statusMessage.className = 'fadeout';
         }, 5000);
@@ -355,12 +319,11 @@ var app = {
         }
     },
     generateFailureFunction: function(message) {
-        var func = function(reason) { // some failure callbacks pass a reason
+        var func = function(reason) { 
             var details = "";
             if (reason) {
                 details += ": " + JSON.stringify(reason);
             }
-            //app.setStatus(message + details);
             navigator.showToast(message + details);
         };
         return func;
