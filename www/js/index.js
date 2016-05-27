@@ -2,7 +2,7 @@
     Control Example for Bluetooth Serial PhoneGap Plugin
     https://github.com/danieltoo/Bikes-Trek-
 
-    Copyright 2013 Daniel Torres
+    Copyright 2016 Daniel Torres
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
