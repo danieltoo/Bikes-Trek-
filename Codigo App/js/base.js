@@ -25,7 +25,6 @@ var db = openDatabase('BDBikes', '1.0', 'MBase de datos de Bike\'s  Trek', 100 *
 
 db.transaction(function(tx) {
     tx.executeSql('create table if not exists Mejores(id, name, time, dis, vel)');
-    //tx.executeSql('insert into Mejores(id, name, time, dis, vel, date) values (1, "Avenida Principal", "0:0:0:20","30m","30m20s","1-may-2016")');
     tx.executeSql("SELECT COUNT(*) as dato FROM Mejores",[],function (tx,rs) {
         var cont = document.getElementById("cont");
         var datos = "Registros : ";
@@ -71,23 +70,18 @@ db.transaction(function(tx) {
 }, errorCB, successCB);
 function errorCB() {
     var salida =  document.getElementById("statusBD");
-    //salida.innerHTML ="Error al Abrir la Base de Datos";
     navigator.showToast("Error al Abrir la Base de Datos")
 }
 function errorCB1() {
      var salida =  document.getElementById("statusBD");
-        //salida.innerHTML ="Error al Cargar Mejores";
         navigator.showToast("Error al Cargar Mejores");
 }
 function successCB() {
     var salida =  document.getElementById("statusBD");
-    //salida.innerHTML ="Mejores cargados correctamente";
     navigator.showToast("Mejores cargados correctamente")
 }
 function successCB1() {
-    //("Datos Guardados");
     var salida =  document.getElementById("statusBD");
-    //salida.innerHTML ="Datos cargados Correctamente";
     navigator.showToast("Datos guardados correctamente");
 }
 function muestrarango(){
@@ -97,18 +91,14 @@ function muestrarango(){
 }
 function insertar(){
     var mascota = prompt("Ingrese un titulo", "");
-    //Detectamos si el usuario ingreso un valor
     var title;
     if (mascota != null){
         title = mascota;
         navigator.showToast("Guardando " + mascota);
-        //alert("Titulo " + mascota);
     }
-    //Detectamos si el usuario NO ingreso un valor
     else {
         title="sin title"
         navigator.showToast("No hay titulo");
-        //alert("No hay titulo");
     }
     
 db.transaction(function(tx) {
@@ -123,7 +113,7 @@ db.transaction(function(tx) {
     tama ++;
     var time = horas +":"+minutos+":"+segundos+":"+mili;
     var sentencia = "insert into Mejores (id , name,  time ,dis, vel) values ("+id+",'"+title+"','"+time+"','"+distancia+"','"+velocidad+"')";
-    //alert(sentencia);
+
     tx.executeSql(sentencia);
     tx.executeSql('select * from Mejores',[], function(tx, rs) {
         var salida =  document.getElementById("salida");
@@ -156,6 +146,6 @@ db.transaction(function(tx) {
 }, errorinsert,successCB1);
 }
 function errorinsert() {
-    //alert("Error al insertar");
+
     navigator.showToast("Error al insertar");
 }
