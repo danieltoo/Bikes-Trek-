@@ -5,7 +5,7 @@
 <h3>PROYECTO :</h3> BIKES TREK
 <p>Dispositivo electronico que permite el manejo de señalizacion vial propia de una bicicleta y una aplicacion para dispositivos moviles para controlarlo.</p>
 
-<h3>AREA:</h3> Deportes , salud física y seguridad vial.
+<h3>AREA:</h3> Deportes , salud y seguridad vial.
 
 <h3>Autor :</h3>
 <p>Isai Suriel Aldana Yañez</p>
